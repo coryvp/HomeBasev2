@@ -1,0 +1,60 @@
+(function(){
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // var firebaseConfig = {
+	// 	apiKey: "AIzaSyC6g7B4jSjPvYSj4xDk5ohpa4cb0D1Iako",
+	// 	authDomain: "mocko-69e41.firebaseapp.com",
+	// 	databaseURL: "https://mocko-69e41.firebaseio.com",
+	// 	projectId: "mocko-69e41",
+	// 	storageBucket: "mocko-69e41.appspot.com",
+	// 	messagingSenderId: "987418970471",
+	// 	appId: "1:987418970471:web:7593fad95e4ebe62f9c7c2"
+    // };
+    // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+
+	// get elements
+	const email    = document.getElementById('email');
+	const password = document.getElementById('password');
+	const login    = document.getElementById('login');
+	const signup   = document.getElementById('signup');
+	const logout   = document.getElementById('logout');
+
+	// login
+	login.addEventListener('click', e => {
+		const auth  = firebase.auth();		
+		const promise = auth.signInWithEmailAndPassword(email.value, password.value);
+		promise.catch(e => console.log(e.message));
+	});
+
+	// signup
+	signup.addEventListener('click', e => {
+		// TODO: check for real email
+		const auth  = firebase.auth();
+		const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+		promise.catch(e => console.log(e.message));
+	});
+
+    // logout
+	logout.addEventListener('click', e => {
+		firebase.auth().signOut();
+	});
+
+    // login state
+	firebase.auth().onAuthStateChanged(firebaseUser => {
+		if(firebaseUser){
+			console.log(firebaseUser);
+			logout.style.display = 'inline';
+			login.style.display  = 'none';
+			signup.style.display = 'none';
+		}
+		else{
+			console.log('User is not logged in');
+			logout.style.display = 'none';			
+			login.style.display  = 'inline';
+			signup.style.display = 'inline';
+		}
+	});
+
+}());
