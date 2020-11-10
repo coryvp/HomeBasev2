@@ -26,6 +26,7 @@
 
 	// write
 	write.addEventListener('click', e => {
+		console.log(firebase.auth().currentUser.uid);
 		const messages = db.ref('messages');
 
 		// simple id - ok for example, do not use in production
