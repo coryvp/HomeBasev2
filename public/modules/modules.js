@@ -52,6 +52,20 @@ ui.navigation = `
     </nav>
 `;
 
+ui.default = `
+    <div class="card" style="width: 18rem;">
+    <div class="card-header">
+    HomeBase
+    </div>
+    <div class="card-body">
+    <h5 class="card-title">Welcome to Homebase</h5>
+    <p class="card-text">A centralized resource for finding and offering temporary, safe housing options in
+    the aftermath of a disaster event.</p>
+    </div>
+    <img src="home.png" class="card-img-top" alt="Home Image">
+    </div> 
+`;
+
 var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
 navigation.innerHTML += ui.navigation;
@@ -62,7 +76,7 @@ var loadSignIn = function(){
 };
 
 var loadRegister = function(){
-    target.innerHTML = '<object type="text/html" data="../database.html" ></object>';;
+    target.innerHTML = '<object type="text/html" data="../database.html" ></object>';
 };
 
 var loadWithdraw = function(){

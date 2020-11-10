@@ -16,7 +16,7 @@
 
 
 	// handle on firebase db
-	// const db = firebase.database();
+	const db = firebase.database();
 
 	// get elements
 	const message = document.getElementById('message');
