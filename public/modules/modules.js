@@ -3,7 +3,7 @@ var ui = {};
 ui.navigation = `
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#" onclick="defaultModule()">
-            <img src="home.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="hands.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
             HomeBase
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@ ui.default = `
     <p class="card-text">A centralized resource for finding and offering temporary, safe housing options in
     the aftermath of a disaster event.</p>
     </div>
-    <img src="home.png" class="card-img-top" alt="Home Image">
+    <img src="hands.jpeg" class="card-img-top" alt="Home Image">
     </div> 
 `;
 
