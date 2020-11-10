@@ -30,7 +30,7 @@ ui.navigation = `
                 Become a Host
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarBecomeHost">
-                <a class="dropdown-item" href="#">Register</a>
+                <a class="dropdown-item" href="#" onclick="loadRegister()">Register</a>
                 <a class="dropdown-item" href="#">My Account</a>
                 </div>
             </li>
@@ -52,119 +52,17 @@ ui.navigation = `
     </nav>
 `;
 
-ui.createAccount = `
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Create Account</div>
-        <div class="card-body">
-        <form>
-            <div class="form-group">
-            <label for="nameInput">Name</label>
-            <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter name">
-            </div>
-            <div class="form-group">  
-            <label for="emailInput">Email Address</label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">  
-            <label for="passwordInput">Password</label>
-            <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
-            </div>
-            <button type="submit" class="btn btn-light" onclick="create()">Create Account</button>
-            <div id="status"></div>
-        </form>
-    </div>
-    </div>
-`;
-
-ui.login = `
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-    <div class="card-header">Login</div>
-    <div class="card-body">
-        <form>
-            <div class="form-group">  
-            <label for="emailInput">Email Address</label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">  
-            <label for="passwordInput">Password</label>
-            <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
-            </div>
-            <button type="submit" class="btn btn-light" onclick="login()">Login</button>
-            <div id="status"></div>
-        </form>
-    </div>
-    </div>
-`;
-
-ui.deposit = `
-    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-    <div class="card-header">Deposit</div>
-    <div class="card-body">
-        <form>
-            <div class="form-group">  
-            <label for="emailInput">Email Address</label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">  
-            <label for="amountInput">Amount</label>
-            <input type="number" class="form-control" id="amountInput" aria-describedby="amountHelp" placeholder="Enter amount">
-            </div>
-            <button type="submit" class="btn btn-light" onclick="deposit()">Deposit</button>
-            <div id="status"></div>
-        </form>
-    </div>
-    </div>
-`;
-
-ui.withdraw = `
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-    <div class="card-header">Withdraw</div>
-    <div class="card-body">
-        <form>
-            <div class="form-group">  
-            <label for="emailInput">Email Address</label>
-            <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-            </div>
-            <div class="form-group">  
-            <label for="amountInput">Amount</label>
-            <input type="number" class="form-control" id="amountInput" aria-describedby="amountHelp" placeholder="Enter amount">
-            </div>
-            <button type="submit" class="btn btn-light" onclick="withdraw()">Withdraw</button>
-            <div id="status"></div>
-        </form>
-    </div>
-    </div>
-`;
-
-ui.default = `
-    <div class="card" style="width: 18rem;">
-    <div class="card-header">
-    HomeBase
-    </div>
-    <div class="card-body">
-    <h5 class="card-title">Welcome to Homebase</h5>
-    <p class="card-text">A centralized resource for finding and offering temporary, safe housing options in
-    the aftermath of a disaster event.</p>
-    </div>
-    <img src="home.png" class="card-img-top" alt="Home Image">
-    </div> 
-`;
-
 var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
 navigation.innerHTML += ui.navigation;
 
 
-var loadCreateAccount = function(){
-    target.innerHTML = ui.createAccount;
-};
-
 var loadSignIn = function(){
     target.innerHTML = '<object type="text/html" data="../login.html" ></object>';
 };
 
-var loadDeposit = function(){
-    target.innerHTML = ui.deposit;
+var loadRegister = function(){
+    target.innerHTML = '<object type="text/html" data="../database.html" ></object>';;
 };
 
 var loadWithdraw = function(){
