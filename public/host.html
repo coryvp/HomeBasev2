@@ -16,11 +16,11 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <style>
         body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        #map { height: 300px; width: 300px;}
     </style>
 </head>
 
-<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+<div class="card text-white bg-secondary mb-3" style="max-width: 350px;">
     <div class="card-header">Post Housing</div>
     <div class="card-body">
         <form>
@@ -32,8 +32,8 @@
                 <label for="passwordInput">Password</label>
                 <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
             </div>
-            <button type="submit" class="btn btn-light" onclick="post()">Login</button>
-            <div id="status"></div>
+            <div id="map"></div>
+            <button type="submit" class="btn btn-light" onclick="post()">Post</button>
         </form>
     </div>
 </div>
@@ -54,7 +54,6 @@
         margin-left: 25%;
     }
     </style>
-    <div id="map"></div>
      
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoiYmhhcnJ5IiwiYSI6ImNrZmVmd3hkbDA0aWEyeXRqaGpxbDBzNWsifQ.bIHGogBJUCCaraWEZv8KHA';
@@ -66,6 +65,7 @@
         });
      
         var geocoder = new MapboxGeocoder({
+            placeholder: 'Enter Location Address',
             accessToken: mapboxgl.accessToken,
             marker: {
             color: 'orange'
@@ -74,6 +74,14 @@
         });
      
         map.addControl(geocoder);
+
+        map.on('load', function () {
+            // Listen for the `geocoder.input` event that is triggered when a user
+            // makes a selection
+            geocoder.on('result', function (ev) {
+            console.log(ev.result.center);
+            });
+      });
     </script>
      
     </body>
