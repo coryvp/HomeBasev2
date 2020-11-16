@@ -11,8 +11,8 @@ ui.navigation = `
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" onclick="defaultModule()">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="defaultModule()">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarFindHousing" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,14 +25,8 @@ ui.navigation = `
                     <a class="dropdown-item" href="#">Book</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarBecomeHost" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Become a Host
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarBecomeHost">
-                <a class="dropdown-item" href="#" onclick="loadRegister()">Register</a>
-                <a class="dropdown-item" href="#">My Account</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#" onclick="loadBecomeHost()">Become a Host</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarHelp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,8 +73,8 @@ var loadRegister = function(){
     target.innerHTML = '<object type="text/html" data="../database.html" ></object>';
 };
 
-var loadWithdraw = function(){
-    target.innerHTML = ui.withdraw;
+var loadBecomeHost = function(){
+    target.innerHTML = '<object type="text/html" data="../host.html" ></object>';
 };
 
 var loadTransactions = function(){
