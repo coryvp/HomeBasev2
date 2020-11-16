@@ -1,8 +1,9 @@
 (function(){
     const email    = document.getElementById('emailInput');
     if (firebase.auth.uid != null) {
+        email.placeholder = firebase.auth();
         email.value = firebase.auth();
     } else {
-        email.value = "Please Log In Before Posting";
+        email.placeholder = "Please Log In Before Posting";
     }
 }());
