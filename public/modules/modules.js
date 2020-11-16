@@ -74,7 +74,7 @@ var loadRegister = function(){
 };
 
 var loadBecomeHost = function(){
-    target.innerHTML = '<object type="text/html" data="../host.html" ></object>';
+    target.innerHTML = '<object data="../host.html" ></object>';
 };
 
 var loadTransactions = function(){
