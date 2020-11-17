@@ -21,102 +21,106 @@
 </head>
 
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-<div class="card-header">Housing Offer</div>
-<div class="card-body">
-<form>
-  <div class="form-group">
-    <label for="typeOfAccommodation">Type of Accommodation</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-    <option selected>Select...</option>  
-    <option>Apartment</option>
-      <option>House</option>
-      <option>Hotel</option>
-      <option>Camping</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="livingSituation">Living Situation</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-    <option selected>Select...</option>
-    <option>Private quarters</option>
-      <option>Shared quarters</option>
-      <option>Entire accommodation</option>
-    </select>
-  </div>
-  <div class="form-group">
-      <label for="numberOfGuests"> How many guests can you host?</label>
-      <input type="number" class="form-control" id="numberOfGuests" placeholder="Number of guests possible">
-    </div>
-    <div class="form-group">
-    <label for="filters"> Filters</label>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Family friendly
-      </label>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Female friendly
-      </label>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Female only
-      </label>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Pet friendly
-      </label>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Smoking friendly
-      </label>
-    </div>
-  </div>
+  <div class="card-header">Housing Offer</div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">  
+        <label for="emailInput">Email Address/User Name</label>
+        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" readonly>
+      </div>
+      <div class="form-group">
+        <label for="typeOfAccommodation">Type of Accommodation</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option selected>Select...</option>  
+          <option>Apartment</option>
+          <option>House</option>
+          <option>Hotel</option>
+          <option>Camping</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="livingSituation">Living Situation</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option selected>Select...</option>
+          <option>Private quarters</option>
+          <option>Shared quarters</option>
+          <option>Entire accommodation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="numberOfGuests"> How many guests can you host?</label>
+        <input type="number" class="form-control" id="numberOfGuests" placeholder="Number of guests possible">
+      </div>
+      <div class="form-group">
+        <label for="filters"> Filters</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck1">
+          <label class="form-check-label" for="gridCheck1">
+            Family friendly
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck2">
+          <label class="form-check-label" for="gridCheck2">
+            Female friendly
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck3">
+          <label class="form-check-label" for="gridCheck3">
+            Female only
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck4">
+          <label class="form-check-label" for="gridCheck4">
+            Pet friendly
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck5">
+          <label class="form-check-label" for="gridCheck5">
+            Smoking friendly
+          </label>
+        </div>
+      </div>
 
-  <div class="form-row">
-    <label for="lengthOfStay">How long can you host?</label>
-  
-    <div class="form-group col-md-6">
-        <input type="number" class="form-control" placeholder="Number">
-    </div>
-      
-      <div class="form-group col-md-6">
+      <div class="form-row">
+        <label for="lengthOfStay">How long can you host?</label>
+        <div class="form-group col-md-6">
+          <input type="number" class="form-control" placeholder="Number">
+        </div>
+        <div class="form-group col-md-6">
           <select class="form-control" id="units">
-      <option selected>Units...</option>
-      <option>Days</option>
-        <option>Weeks</option>
-        <option>Months</option>
-      </select>  
-    </div>
-
-  <div class="form-group">  
-    <label for="emailInput">Email Address/User Name</label>
-    <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" readonly>
-    </div>
-    <div class="form-group">  
-        <label for="passwordInput">Password</label>
-        <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
-    </div>
-    <div id="map"></div>
-    <button type="submit" class="btn btn-light" onclick="post()">Post</button>  
-  </form>
-</div>
+            <option selected>Units...</option>
+            <option>Days</option>
+            <option>Weeks</option>
+            <option>Months</option>
+          </select>  
+        </div>
+        <!---
+        <div class="form-group">  
+          <label for="emailInput">Email Address/User Name</label>
+          <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" readonly>
+        </div>
+        <div class="form-group">  
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
+        </div>
+        --->
+        <div id="map"></div>
+        <button type="submit" class="btn btn-light" onclick="post()">Post</button>  
+      </div>
+    </form>
+  </div>
 </div>
 
 

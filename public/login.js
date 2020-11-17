@@ -34,6 +34,7 @@
 		const auth  = firebase.auth();
 		const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
 		promise.catch(e => console.log(e.message));
+		//loadMyAccount();  //amm 16nov will this work? Idk... 
 	});
 
     // logout
