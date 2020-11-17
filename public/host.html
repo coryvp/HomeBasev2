@@ -172,7 +172,9 @@
 
     <script>
         function fake(){
-            firebase.database().ref('hosts').set({
+            var hosts = db.ref('hosts');
+            var id = firebase.auth().uid;
+            hosts.child(id).set({
                 "email" : firebase.auth().email,
                 "latitude" : faker.address.latitude(),
                 "longitude" : faker.address.longitude()
