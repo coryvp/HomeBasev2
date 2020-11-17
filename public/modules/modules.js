@@ -74,11 +74,7 @@ var loadRegister = function(){
 };
 
 var loadBecomeHost = function(){
-    $(document).ready(function(){
-   
-        $('#target').load("host.html");
-     
-     });
+    target.innerHTML = '<object type="text/html" data="../database.html" width="500" height="500"></object>';
 };
 
 var loadTransactions = function(){
