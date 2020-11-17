@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "bharry@mit.edu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mapbox-gl": "^1.12.0"
+  }
 }

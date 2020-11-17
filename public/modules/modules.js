@@ -1,40 +1,22 @@
 var ui = {};
 
 ui.navigation = `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" onclick="defaultModule()">
-            <img src="hands.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-            HomeBase
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#" onclick="defaultModule()">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarFindHousing" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Find Housing
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarFindHousing">
-                    <a class="dropdown-item" href="#">Search</a>
-                    <a class="dropdown-item" href="#">Select Housing Option</a>
-                    <a class="dropdown-item" href="#">Register</a>
-                    <a class="dropdown-item" href="#">Book</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarBecomeHost" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Become a Host
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarBecomeHost">
-                <a class="dropdown-item" href="#" onclick="loadRegister()">Register</a>
-                <a class="dropdown-item" href="#">My Account</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" onclick="defaultModule()">  
+    <img src="hands.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+    HomeBase
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      <a class="nav-item nav-link" href="#" onclick="loadSignIn()" >Sign In</a>
+      <a class="nav-item nav-link" href="#" onclick="loadFindHousing()" >Find Housing</a>
+      <a class="nav-item nav-link" href="#" onclick="loadOfferHousing()" >Offer Housing</a>
+      <a class="nav-item nav-link" href="#" onclick="loadMyAccount()" >My Account</a>
+    </div>
+    <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarHelp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Help
                 </a>
@@ -44,12 +26,8 @@ ui.navigation = `
                 <a class="dropdown-item" href="#">Terms & Conditions</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadSignIn()">Sign In</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
+  </nav>    
+
 `;
 
 ui.default = `
@@ -75,15 +53,15 @@ var loadSignIn = function(){
     target.innerHTML = '<object type="text/html" data="../login.html" ></object>';
 };
 
-var loadRegister = function(){
+var loadFindHousing = function(){
     target.innerHTML = '<object type="text/html" data="../database.html" ></object>';
 };
 
-var loadWithdraw = function(){
-    target.innerHTML = ui.withdraw;
+var loadOfferHousing = function(){
+    target.innerHTML = '<object type="text/html" data="../host.html" ></object>';
 };
 
-var loadTransactions = function(){
+var loadMyAccount = function(){
     target.innerHTML = ui.transactions;
 };
 
