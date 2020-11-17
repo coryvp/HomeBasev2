@@ -172,19 +172,34 @@
 
     <script>
         function fake(){
+            var user = firebase.auth().currentUser;
+
             var db = firebase.database();
             var hosts = db.ref('hosts');
-            var id = firebase.auth().uid;
-            hosts.child(id).set({
-                "email" : firebase.auth().email,
-                "latitude" : faker.address.latitude(),
-                "longitude" : faker.address.longitude()
-            });
+            var id = user.uid;
+
+            if (user) {
+                hosts.child(id).set({
+                    "email" : user.email,
+                    "latitude" : faker.address.latitude(),
+                    "longitude" : faker.address.longitude()
+                });
+            }
+            
         }
+        
+        const email    = document.getElementById('emailInput');
+
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                email.placeholder = user.email;
+                email.value = user.email;
+            } else {
+                email.placeholder = "Please Log In Before Posting";
+            }
+        });
     </script>
      
     </body>
-
-<script src="host.js"></script>
 
 </html>
