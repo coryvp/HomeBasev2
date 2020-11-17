@@ -174,15 +174,17 @@
         function fake(){
             var user = firebase.auth().currentUser;
             var db = firebase.database();
-            var userRef = db.ref('users');
             var id = user.uid;
+            var postRef = db.ref('users/' + id + '/postings');
+            
             
 
             if (user) {
                 console.log(user.email);
-                userRef.child(id).set({
-                  email : user.email,
-                  postings: []
+                var newPostRef = postRef.push();
+                newPostRef.set({
+                  latitude : faker.latitude(),
+                  longitude : faker.longitude()                  
                 })
             }
             
