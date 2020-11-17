@@ -179,6 +179,7 @@
             var id = user.uid;
 
             if (user) {
+                console.log(user.email);
                 hosts.child(id).set({
                     "email" : user.email,
                     "latitude" : faker.address.latitude(),
