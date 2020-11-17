@@ -180,7 +180,13 @@
             if (user) {
                 console.log(user.email);
                 var userID = firebase.database().ref('users/' + id)
-                userID.child('email').set(user.email);
+                userID.child('email').set(user.email)
+                  .then(function() {
+                      console.log('Synchronization succeeded');
+                    })
+                    .catch(function(error) {
+                      console.log(error);
+                    });
                 userID.child('postings').set([]);
             }
             
