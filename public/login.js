@@ -49,6 +49,8 @@
 			logout.style.display = 'inline';
 			login.style.display  = 'none';
 			signup.style.display = 'none';
+			password.style.display  = 'none';
+			
 		}
 		else{
 			console.log('User is not logged in');

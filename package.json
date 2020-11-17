@@ -9,6 +9,7 @@
   "author": "bharry@mit.edu",
   "license": "MIT",
   "dependencies": {
+    "jshint": "^2.12.0",
     "mapbox-gl": "^1.12.0"
   }
 }

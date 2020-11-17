@@ -59,7 +59,7 @@ ui.myAccount = `
             <form>
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    <input type="email" class="form-control" id="emailInput" placeholder="Enter email" readonly>
                 </div>
                 <div class="form-group">
                     <label for="firstName"> First Name</label>
@@ -87,12 +87,59 @@ ui.myAccount = `
     </div>
 `;
 
+ui.LoggedOut = `
+    <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+        <div class="card-header">
+            User Error
+        </div>
+        <div class="card-body">
+            <form>
+                <h5 class="card-title">No User Logged In</h5>
+                <p class="card-text">Please sign in to use HomeBase</p>
+                <img src="hands.jpeg" class="card-img-top" alt="Home Image">
+                <p class="card-text"></p>
+                <button type="submit" class="btn btn-light" onclick="loadSignIn()">Sign In</button>
+            </form>
+        </div>
+        
+
+    </div> 
+`;
+
+
 ui.Login = `
+
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Sign In</div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                   <!-- <label for="email">Email Address</label> -->
+                    <input type="email" class="form-control" id="email" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <!--<label for="password">Password</label> -->
+                    <input type="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
+                <button type="submit" class="btn btn-light" id="login">Login</button>
+                <button type="submit" class="btn btn-light" id="signup">SignUp</button>
+                <button type="submit" class="btn btn-light" id="logout" style="display:none;">Logout</button>
+            </form>
+            <div id = "status"></div> 
+
+        </div>
+    </div>
+
+
+
+
+    <!--
     <input id="email" type="email" placeholder="Email"><br>
     <input id="password" type="password" placeholder="Password"><br><br>
     <button id="login">Login</button>
     <button id="signup">SignUp</button>
     <button id="logout" style="display:none;">Logout</button>
+    -->
 `; 
 
 
@@ -113,7 +160,7 @@ var loadSignIn = function(){
     const signup   = document.getElementById('signup');
     const logout   = document.getElementById('logout');
 
-    // login
+   /*  // login
     login.addEventListener('click', e => {
         const auth  = firebase.auth();		
         const promise = auth.signInWithEmailAndPassword(email.value, password.value);
@@ -132,21 +179,53 @@ var loadSignIn = function(){
     // logout
     logout.addEventListener('click', e => {
         firebase.auth().signOut();
-    });
+    }); */
 
     // login state
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser){
             console.log(firebaseUser);
+
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    email.placeholder = user.email;
+                    email.value = user.email;
+                } else {
+                    email.placeholder = "Please Log In Before Updating Account!";
+                }
+            });
             logout.style.display = 'inline';
             login.style.display  = 'none';
             signup.style.display = 'none';
+            password.style.display = 'none';
+
+            logout.addEventListener('click', e => {
+                firebase.auth().signOut();
+            });
         }
         else{
+
             console.log('User is not logged in');
             logout.style.display = 'none';			
             login.style.display  = 'inline';
             signup.style.display = 'inline';
+
+        
+            // login
+            login.addEventListener('click', e => {
+                const auth  = firebase.auth();		
+                const promise = auth.signInWithEmailAndPassword(email.value, password.value);
+                promise.catch(e => console.log(e.message));
+            });
+        
+            // signup
+            signup.addEventListener('click', e => {
+                // TODO: check for real email
+                const auth  = firebase.auth();
+                const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
+                promise.catch(e => console.log(e.message));
+                loadMyAccount();  //amm 16nov load my account page after signup 
+            });
         }
     });
     
@@ -159,11 +238,48 @@ var loadRegister = function(){
 };
 
 var loadOfferHousing = function(){
-    target.innerHTML = '<object type="text/html" data="../host.html" width="500" height="500"></object>';
+
+    // login state
+	firebase.auth().onAuthStateChanged(firebaseUser => {
+		if(firebaseUser){
+            console.log(firebaseUser);
+            
+            target.innerHTML = '<object type="text/html" data="../host.html" width="500" height="500"></object>';
+		}
+		else{
+            console.log('User is not logged in');
+            target.innerHTML = ui.LoggedOut;
+		}
+	});
+
+   
 };
 
 var loadMyAccount = function(){
-    target.innerHTML = ui.myAccount;
+  
+    // login state
+	firebase.auth().onAuthStateChanged(firebaseUser => {
+		if(firebaseUser){
+            console.log(firebaseUser);
+            
+            target.innerHTML = ui.myAccount;
+            const email    = document.getElementById('emailInput');
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    email.placeholder = user.email;
+                    email.value = user.email;
+                } else {
+                    email.placeholder = "Please Log In Before Updating Account!";
+                }
+            });
+		}
+		else{
+            console.log('User is not logged in');
+            target.innerHTML = ui.LoggedOut;
+		}
+	});
+    
+
 };
 
 var loadBalance = function(){
