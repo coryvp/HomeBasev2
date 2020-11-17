@@ -110,7 +110,7 @@ var loadRegister = function(){
     target.innerHTML = '<object type="text/html" data="../database.html" ></object>';
 };
 
-var loadBecomeHost = function(){
+var loadOfferHousing = function(){
     target.innerHTML = '<object type="text/html" data="../host.html" width="500" height="500"></object>';
 };
 
