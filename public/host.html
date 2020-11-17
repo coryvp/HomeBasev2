@@ -184,7 +184,10 @@
                     "email" : user.email,
                     "latitude" : faker.address.latitude(),
                     "longitude" : faker.address.longitude()
-                });
+                })
+                  .then(function(){
+                    console.log("wrote to db")
+                  });
             }
             
         }
