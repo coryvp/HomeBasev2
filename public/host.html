@@ -172,6 +172,7 @@
 
     <script>
         function fake(){
+            var db = firebase.database();
             var hosts = db.ref('hosts');
             var id = firebase.auth().uid;
             hosts.child(id).set({
