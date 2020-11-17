@@ -183,8 +183,8 @@
                 console.log(user.email);
                 var newPostRef = postRef.push();
                 newPostRef.set({
-                  latitude : faker.latitude(),
-                  longitude : faker.longitude()                  
+                  latitude : faker.address.latitude(),
+                  longitude : faker.address.longitude()                  
                 })
             }
             
