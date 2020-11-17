@@ -1,49 +1,41 @@
 var ui = {};
 
 ui.navigation = `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#" onclick="defaultModule()">
-            <img src="hands.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-            HomeBase
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#" onclick="defaultModule()">  
+    <img src="hands.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+    HomeBase
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#" onclick="defaultModule()">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarFindHousing" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Find Housing
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarFindHousing">
-                    <a class="dropdown-item" href="#">Search</a>
-                    <a class="dropdown-item" href="#">Select Housing Option</a>
-                    <a class="dropdown-item" href="#">Register</a>
-                    <a class="dropdown-item" href="#">Book</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadBecomeHost()">Become a Host</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarHelp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Help
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarHelp">
-                <a class="dropdown-item" href="#">Contact Us</a>
-                <a class="dropdown-item" href="#">Privacy Policy</a>
-                <a class="dropdown-item" href="#">Terms & Conditions</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="loadSignIn()">Sign In</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
+      <a class="nav-item nav-link" href="#" onclick="loadSignIn()" >Sign In</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-item nav-link" href="#" onclick="loadFindHousing()" >Find Housing</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-item nav-link" href="#" onclick="loadOfferHousing()" >Offer Housing</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarHelp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Help
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarHelp">
+      <a class="dropdown-item" href="#">Contact Us</a>
+      <a class="dropdown-item" href="#">Privacy Policy</a>
+      <a class="dropdown-item" href="#">Terms & Conditions</a>
+      </div>
+  </li>
+      <li class="nav-item">
+      <a class="nav-item nav-link" href="#" onclick="loadMyAccount()" >My Account</a>
+      </li>
+   
+  </nav>    
+
 `;
 
 ui.default = `
@@ -60,6 +52,51 @@ ui.default = `
     </div> 
 `;
 
+ui.myAccount = `
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+<div class="card-header">Create Account</div>
+<div class="card-body">
+<form>
+  <div class="form-group">
+    <label for="firstName"> First Name</label>
+    <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+  </div>
+  <div class="form-group">
+  <label for="lastName"> Last Name</label>
+  <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+</div>
+<div class="form-group">
+<label for="phoneNumber"> Phone Number</label>
+<input type="number" class="form-control" id="phoneNumber" placeholder="Enter phone number">
+</div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+  <label for="DOB"> Date of Birth</label>
+  <input type="date" class="form-control" id="DOB" placeholder="MM/DD/YYYY">
+</div>
+<div class="form-group">
+<label for="firstName"> First Name</label>
+<input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+</div>
+  <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Enter password">
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-light" onclick="create()">Create account</button>
+      </div>
+    </div>
+</form>
+</div>
+</div>
+`;
+
+
+
 var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
 navigation.innerHTML += ui.navigation;
@@ -74,11 +111,11 @@ var loadRegister = function(){
 };
 
 var loadBecomeHost = function(){
-    target.innerHTML = '<object type="text/html" data="../database.html" width="500" height="500"></object>';
+    target.innerHTML = '<object type="text/html" data="../host.html" width="500" height="500"></object>';
 };
 
-var loadTransactions = function(){
-    target.innerHTML = ui.transactions;
+var loadMyAccount = function(){
+    target.innerHTML = ui.myAccount;
 };
 
 var loadBalance = function(){
