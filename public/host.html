@@ -173,21 +173,17 @@
     <script>
         function fake(){
             var user = firebase.auth().currentUser;
-
+            var db = firebase.database();
+            var userRef = db.ref('users');
             var id = user.uid;
             
 
             if (user) {
                 console.log(user.email);
-                var userID = firebase.database().ref('users/' + id)
-                userID.child('email').set(user.email)
-                  .then(function() {
-                      console.log('Synchronization succeeded');
-                    })
-                    .catch(function(error) {
-                      console.log(error);
-                    });
-                userID.child('postings').set([]);
+                userRef.child(id).set({
+                  email : user.email,
+                  postings: []
+                })
             }
             
         }
