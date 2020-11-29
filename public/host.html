@@ -33,7 +33,7 @@
       </div>
       <div class="form-group">
         <label for="typeOfAccommodation">Type of Accommodation</label>
-        <select class="form-control" id="typeOfAccommodation">
+        <select class="form-control" id="exampleFormControlSelect1">
           <option selected>Select...</option>  
           <option>Apartment</option>
           <option>House</option>
@@ -43,7 +43,7 @@
       </div>
       <div class="form-group">
         <label for="livingSituation">Living Situation</label>
-        <select class="form-control" id="livingSituation">
+        <select class="form-control" id="exampleFormControlSelect1">
           <option selected>Select...</option>
           <option>Private quarters</option>
           <option>Shared quarters</option>
@@ -146,9 +146,6 @@
     </style>
      
     <script>
-      var currentLat = 0;
-      var currentLong = 0;
-
         mapboxgl.accessToken = 'pk.eyJ1IjoiYmhhcnJ5IiwiYSI6ImNrZmVmd3hkbDA0aWEyeXRqaGpxbDBzNWsifQ.bIHGogBJUCCaraWEZv8KHA';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -172,11 +169,12 @@
             // Listen for the `geocoder.input` event that is triggered when a user
             // makes a selection
             geocoder.on('result', function (ev) {
-            currentLong=ev.result.center[1]
-            currentLat=ev.result.center[0]
-            console.log([currentLat,currentLong]);
+            console.log(ev.result.center);
             });
       });
+    </script>
+
+    <script>
         function fake(){
             var user = firebase.auth().currentUser;
             var db = firebase.database();
@@ -189,26 +187,6 @@
                 console.log(user.email);
                 var newPostRef = postRef.push();
                 newPostRef.set({
-                  latitude : faker.address.latitude(),
-                  longitude : faker.address.longitude()                  
-                })
-            }
-            
-        }
-
-        function post(){
-            var user = firebase.auth().currentUser;
-            var db = firebase.database();
-            var id = user.uid;
-            var postRef = db.ref('users/' + id + '/postings');
-            
-
-            if (user) {
-                console.log(user.email);
-                var newPostRef = postRef.push();
-                newPostRef.set({
-                  typeofaccomodation : document.getElementById("typeOfAccommodation").value,
-                  livingsituation : document.getElementById("livingSituation").value,
                   latitude : faker.address.latitude(),
                   longitude : faker.address.longitude()                  
                 })
