@@ -53,18 +53,25 @@ ui.navigation = `
 `;
 
 ui.default = `
-    <div class="card" style="width: 18rem;">
-    <div class="card-header">
-    HomeBase
-    </div>
-    <div class="card-body">
-    <h5 class="card-title">Welcome to Homebase</h5>
-    <p class="card-text">A centralized resource for finding and offering temporary, safe housing options in
-    the aftermath of a disaster event.</p>
-    </div>
-    <img src="hands.jpeg" class="card-img-top" alt="Home Image">
-    </div> 
+
+<div>
+<style>
+h1 {text-align: center;
+padding-top: 5rem;}
+
+p {text-align: center;
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">}
+div {text-align: center;}
+</style>
+<h1>Welcome to HomeBase</h1>
+  <p>We are centralized resource for finding and offering temporary, safe housing options in the aftermath of a disaster event.</p>
+  <img src="Picture 1.png" alt="Hands making house" width="350" height="260">
+
+</div>
+
 `;
+
 
 var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
