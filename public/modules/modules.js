@@ -142,6 +142,203 @@ ui.Login = `
     -->
 `; 
 
+ui.OfferHousing=`
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+    body { margin: 0; padding: 0; }
+    #map { height: 300px; width: 300px;}
+</style>
+</head>
+
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+<div class="card-header">Housing Offer</div>
+<div class="card-body">
+  <form>
+    <div class="form-group">  
+      <label for="emailInput">Email Address/User Name</label>
+      <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" readonly>
+    </div>
+    <div class="form-group">
+      <label for="typeOfAccommodation">Type of Accommodation</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option selected>Select...</option>  
+        <option>Apartment</option>
+        <option>House</option>
+        <option>Hotel</option>
+        <option>Camping</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="livingSituation">Living Situation</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+        <option selected>Select...</option>
+        <option>Private quarters</option>
+        <option>Shared quarters</option>
+        <option>Entire accommodation</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="numberOfGuests"> How many guests can you host?</label>
+      <input type="number" class="form-control" id="numberOfGuests" placeholder="Number of guests possible">
+    </div>
+    <div class="form-group">
+      <label for="filters"> Filters</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck1">
+        <label class="form-check-label" for="gridCheck1">
+          Family friendly
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck2">
+        <label class="form-check-label" for="gridCheck2">
+          Female friendly
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck3">
+        <label class="form-check-label" for="gridCheck3">
+          Female only
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck4">
+        <label class="form-check-label" for="gridCheck4">
+          Pet friendly
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck5">
+        <label class="form-check-label" for="gridCheck5">
+          Smoking friendly
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <label for="lengthOfStay">How long can you host?</label>
+      <div class="form-group col-md-6">
+        <input type="number" class="form-control" placeholder="Number">
+      </div>
+      <div class="form-group col-md-6">
+        <select class="form-control" id="units">
+          <option selected>Units...</option>
+          <option>Days</option>
+          <option>Weeks</option>
+          <option>Months</option>
+        </select>  
+      </div>
+      <!---
+      <div class="form-group">  
+        <label for="emailInput">Email Address/User Name</label>
+        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" readonly>
+      </div>
+      <div class="form-group">  
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" id="passwordInput" aria-describedby="passwordHelp" placeholder="Enter password">
+      </div>
+      --->
+      <div id="map"></div>
+      <button type="submit" class="btn btn-light" onclick="post()">Post</button>
+      <button type="button" class="btn btn-light" onclick="fake()">Fake</button>   
+    </div>
+  </form>
+</div>
+</div>
+
+
+<body>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+  <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+      type="text/css"
+  />
+  <!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+  <style>
+  #geocoder-container > div {
+      min-width: 50%;
+      margin-left: 25%;
+  }
+  </style>
+   
+  <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYmhhcnJ5IiwiYSI6ImNrZmVmd3hkbDA0aWEyeXRqaGpxbDBzNWsifQ.bIHGogBJUCCaraWEZv8KHA';
+      var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [-79.4512, 43.6568],
+          zoom: 13
+      });
+   
+      var geocoder = new MapboxGeocoder({
+          placeholder: 'Enter Location Address',
+          accessToken: mapboxgl.accessToken,
+          marker: {
+          color: 'orange'
+          },
+          mapboxgl: mapboxgl
+      });
+   
+      map.addControl(geocoder);
+
+      map.on('load', function () {
+          // Listen for the geocoder.input event that is triggered when a user
+          // makes a selection
+          geocoder.on('result', function (ev) {
+          console.log(ev.result.center);
+          });
+    });
+  </script>
+
+  <script>
+      function fake(){
+          var user = firebase.auth().currentUser;
+          var db = firebase.database();
+          var id = user.uid;
+          var postRef = db.ref('users/' + id + '/postings');
+          
+          
+
+          if (user) {
+              console.log(user.email);
+              var newPostRef = postRef.push();
+              newPostRef.set({
+                latitude : faker.address.latitude(),
+                longitude : faker.address.longitude()                  
+              })
+          }
+          
+      }
+      
+      const email    = document.getElementById('emailInput');
+
+      firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              email.placeholder = user.email;
+              email.value = user.email;
+          } else {
+              email.placeholder = "Please Log In Before Posting";
+          }
+      });
+  </script>
+   
+  </body>`
+
 
 
 var target     = document.getElementById('target');
@@ -244,7 +441,7 @@ var loadOfferHousing = function(){
 		if(firebaseUser){
             console.log(firebaseUser);
             
-            target.innerHTML = '<object type="text/html" data="../host.html" width="500" height="500"></object>';
+            target.innerHTML = ui.OfferHousing;
 		}
 		else{
             console.log('User is not logged in');
