@@ -7,13 +7,13 @@ const config = {
     zoom: 13, //Default zoom
     title: "Search for Shelter",
     description: "You can sort shelter options by distance, or use the filters below to search options that match your needs.",
-    sideBarInfo: ["Header", "Info 1", "Info 2"],
-    popupInfo: ["Popup Information"],
+    sideBarInfo: ["Location", "Type", "Living Situation", "Max. # of Guests", "Filters", "Time Available"],
+    popupInfo: ["Location", "Type", "Living Situation", "Max. # of Guests", "Filters", "Time Available"],
     filters: [
         {
             type: "dropdown",
             title: "Number of guests: ",
-            columnHeader: "Column Name",
+            columnHeader: "Max. # of Guests",
             listItems: [
                 '1',
                 '2',
@@ -31,7 +31,7 @@ const config = {
         {
             type: "checkbox",
             title: "Type of Accommodation: ",
-            columnHeader: "Column Name",
+            columnHeader: "Type",
             listItems: [
                 'Apartment',
                 'House',
@@ -43,13 +43,13 @@ const config = {
         {
             type: "checkbox",
             title: "Living situation: ",
-            columnHeader: "Column Name",
+            columnHeader: "Living Situation",
             listItems: ["Private quarters", "Shared quarters", "Entire accommodation"]
         },
         {
             type: "checkbox",
             title: "Specifics: ",
-            columnHeader: "Column Name",
+            columnHeader: "Filters",
             listItems: ["Family friendly", "Female only", "Female host", "Pet friendly", "Smoking okay"]
         }
         
