@@ -25,6 +25,9 @@ ui.navigation = `
                     <a class="dropdown-item" href="#">Book</a>
                 </div>
             </li>
+            <li class="nav-item">
+      <a class="nav-item nav-link" href="#" onclick="loadFindHousing()" >Find Housing</a>
+      </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarBecomeHost" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Become a Host
@@ -72,11 +75,76 @@ div {text-align: center;}
 
 `;
 
+ui.findHousing = `
+
+
+    <div class='flex-parent viewport-full relative scroll-hidden'>
+        <div class='flex-child w-full w360-ml absolute static-ml left bottom'>
+            <div class='flex-parent flex-parent--column viewport-third bg-white'>
+                <div class='flex-child flex-child--grow'>
+                    <div id="sidebarA"
+                        class="flex-parent flex-parent--column-ml flex-parent--center-main theme py12 px12 ">
+                        <h3 id='title' class='txt-l-ml txt-m txt-bold mb6 mr0-ml mr24 align-center block'>
+                        </h3>
+                        <p id='description' class='txt-s py12 none block-ml'>
+                        </p>
+                        <div class="flex-parent flex-parent--center-main relative-ml absolute right top mt0-ml mt6">
+                            <button id='filterResults' class='txt-bold btn btn--stroke mr0-ml mr12 px18-ml px6'>
+                                <svg class='icon inline-block align-middle h24 w24'>
+                                    <use xlink:href='#icon-filter' /></svg>
+                                <p class="inline-block-ml align-middle remove none">Show Filters</p>
+                            </button>
+                        </div>
+
+
+                    </div>
+                    <div id="listings" class="flex-child viewport-twothirds py12 px12 listings scroll-auto"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class='flex-child flex-child--grow w-auto viewport-full-ml viewport-twothirds' id='map'>
+
+        </div>
+
+        <div id='modal'
+            class='absolute top right bottom left scroll-auto hide-visually flex-parent flex-parent--center-main mt120-ml'>
+            <div class='pt36'>
+                <div class='flex-child bg-white round relative scroll-auto'>
+                    <button id='exitButton' class='absolute top right px12 py12'>
+                        <svg class='icon link color-darken50'>
+                            <use xlink:href='#icon-close'></use>
+                        </svg>
+                    </button>
+                    <div class='px24 py24'>
+                        <form id="filters"></form>
+                        <div class='align-center py12'></div>
+                        <div class="flex-parent flex-parent--center-main">
+                            <button id="removeFilters" class="btn">Reset Filters</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+`;
+
 
 var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
 navigation.innerHTML += ui.navigation;
 
+
+var loadFindHousing = function(){
+    target.innerHTML = ui.findHousing;
+    loadMaps();
+  };
 
 var loadSignIn = function(){
     target.innerHTML = '<object type="text/html" data="../login.html" ></object>';
