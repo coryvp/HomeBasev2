@@ -27,7 +27,7 @@
 	const FemO  = document.getElementById('FemaleOnly');
 	const PetF  = document.getElementById('PetFriendly');
 	const SmoF  = document.getElementById('SmokingFriendly');
-	const LOS   = document.getElementById('lengtOfStay');
+	const LOS   = document.getElementById('lengthOfStay');
 	const units = document.getElementById('units');
 	const pb 	= document.getElementById('postbutton');
 
