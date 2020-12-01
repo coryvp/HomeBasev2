@@ -50,9 +50,13 @@ p {text-align: center;
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">}
 div {text-align: center;}
 </style>
-<h1>Welcome to HomeBase</h1>
 <br></br>
-  <p>We are centralized resource for finding and offering temporary, safe housing options in the aftermath of a disaster event.</p>
+<h1>Welcome to</h1>
+
+<img src="hb_title.png" alt="HomeBase" width="350" height="100">
+<br></br>
+
+  <p>A centralized resource for finding and offering temporary, safe housing options in the aftermath of a disaster event.</p>
   <img src="Picture 1.png" alt="Hands making house" width="350" height="260">
 
 </div>
