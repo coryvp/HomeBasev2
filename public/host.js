@@ -30,6 +30,7 @@
 	const LOS   = document.getElementById('lengthOfStay');
 	const units = document.getElementById('units');
 	const pb 	= document.getElementById('postbutton');
+	const status  = document.getElementById('status');
 
 	// write
 	pb.addEventListener('click', e => {
@@ -68,6 +69,7 @@
 		})
 			.then(function(){
 				console.log("Write to DB Successful!");
+				status.innerHTML = "Posting Successful!";
 			});
 	});
 }());
